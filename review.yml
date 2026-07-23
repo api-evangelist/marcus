@@ -1,0 +1,83 @@
+aid: marcus
+name: Marcus by Goldman Sachs
+review:
+  question: Does Marcus by Goldman Sachs expose a documented public first-party consumer developer API?
+  answer: false
+  date: '2026-07-23'
+  reviewer: API Evangelist
+findings:
+  summary: |
+    Marcus by Goldman Sachs — the U.S. consumer banking brand of The Goldman Sachs
+    Group (high-yield Online Savings and CDs; personal-loan origination discontinued)
+    — publishes NO first-party public consumer developer API and runs NO self-serve
+    developer portal for its retail banking products. Deposits are held at Goldman
+    Sachs Bank USA, a New York State-chartered bank and Federal Reserve member, FDIC
+    insured.
+
+    Goldman Sachs operates an institutional developer platform at developer.gs.com
+    (Transaction Banking, Marquee), but it does not serve Marcus consumer banking and
+    was not reachable from a non-browser client during this review. No downloadable
+    OpenAPI/Swagger specification was found for any Marcus consumer product, so none
+    was harvested.
+
+    Consumer-permissioned Marcus account data is reachable only through third-party
+    open-finance aggregators. Plaid confirmed support (HTTP 200) for Marcus across the
+    Assets, Auth, Balance, Transactions, and Investments products, over Depository,
+    Loan, Investment, and Other account types (US only). Flinks and MX are also cited
+    as aggregator paths. Authentication for these paths is governed by each aggregator
+    (aggregator-managed OAuth/consent or credential-based connectivity), not by a
+    published Marcus OAuth2/OIDC/mTLS developer interface.
+
+    Regulatory posture: as a U.S. bank, Goldman Sachs Bank USA falls under the emerging
+    CFPB Section 1033 personal financial data rights framework. No first-party
+    FDX-conformant Marcus developer interface is publicly documented, and no explicit
+    published Marcus 1033 data-access page was located. FDX participation is therefore
+    NOT asserted here (no fabrication).
+  posture:
+    firstPartyDeveloperPortal: false
+    firstPartyConsumerApi: false
+    downloadableOpenApi: false
+    fdxParticipantDocumented: false
+    section1033PostureDocumented: false
+    aggregatorOnly: true
+    authModel: aggregator-managed (no published Marcus OAuth2/OIDC/API-key/mTLS developer interface)
+    specProvenance: none harvested (no public Marcus OpenAPI/Swagger found)
+  transports:
+    - protocol: REST
+      scheme: https
+      documented: false
+      note: No first-party Marcus consumer REST API is publicly documented.
+    - protocol: Aggregator
+      scheme: https
+      documented: true
+      note: Consumer data access via Plaid (confirmed), Flinks, and MX; not a Marcus-operated API.
+  probes:
+    - url: https://www.marcus.com/us/en
+      status: 403
+      note: Live consumer marketing/banking site; 403 to non-browser client (Akamai/bot protection), site genuinely exists.
+    - url: https://developer.gs.com/
+      status: 000
+      note: Goldman Sachs institutional developer portal; bot-blocked / unreachable from non-browser client. Not a Marcus consumer surface.
+    - url: https://developer.gs.com/discover/products/marcus/
+      status: 000
+      note: Referenced Goldman Sachs Developer product-discovery page; could not be confirmed live from a non-browser client.
+    - url: https://plaid.com/institutions/marcus-by-goldman-sachs/
+      status: 200
+      note: Confirms aggregator-only access; Plaid products Assets, Auth, Balance, Transactions, Investments (US).
+sources:
+  - url: https://plaid.com/institutions/marcus-by-goldman-sachs/
+    type: Documentation
+    note: Aggregator data-access route and supported products for Marcus.
+  - url: https://www.openbankingtracker.com/provider/marcus
+    type: Reference
+    note: Independent tracker confirms no direct/public Marcus API; access via Plaid and Flinks aggregators.
+  - url: https://www.marcus.com/us/en
+    type: Website
+    note: Marcus consumer banking site (Online Savings, CDs).
+actions:
+  openapiHarvested: false
+  apisYmlUpdated: true
+  reason: |
+    No public Marcus consumer API or downloadable spec exists. apis.yml records identity
+    plus a single honest aggregator-only data-access pointer (Plaid). No FDX/1033 first-party
+    interface asserted. This is an honest identity + aggregator-only (built-stub) result.
