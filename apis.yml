@@ -51,10 +51,18 @@ apis:
   - type: Documentation
     url: https://plaid.com/institutions/marcus-by-goldman-sachs/
 common:
+- type: DomainSecurity
+  url: security/marcus-domain-security.yml
 - type: Website
   url: https://www.marcus.com/us/en
 - type: LinkedIn
   url: https://www.linkedin.com/company/goldman-sachs
+- type: Support
+  url: https://www.marcus.com/us/en/help-center
+- type: TermsOfService
+  url: https://www.marcus.com/us/en/site-terms
+- type: PrivacyPolicy
+  url: https://www.marcus.com/us/en/privacy-policy
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
