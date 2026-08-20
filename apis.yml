@@ -31,6 +31,16 @@ deliveryModel:
   method: derived
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 tags:
+- Financial-Services
+- Banking
+- United States
+- Consumer Banking
+- Neobank
+- Digital Banking
+- Savings
+- Open Finance
+- Data Aggregation
+tags_raw:
 - Financial Services
 - Banking
 - United States
