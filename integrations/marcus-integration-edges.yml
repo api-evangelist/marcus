@@ -1,0 +1,18 @@
+generated: '2026-10-12'
+method: none
+source:
+- https://zapier.com/apps/marcus/integrations
+- https://zapier.com/apps/marcus-by-goldman-sachs/integrations
+- https://n8n.io/integrations/marcus/
+- https://composio.dev/toolkits/marcus
+- https://monid.ai/tools/marcus
+checked:
+- https://composio.dev/toolkits/marcus
+- https://monid.ai/tools/marcus
+- https://n8n.io/integrations/marcus/
+- https://zapier.com/apps/marcus-by-goldman-sachs/integrations
+- https://zapier.com/apps/marcus/integrations
+summary: null
+marketplace_apps: []
+edges: []
+templates: []
